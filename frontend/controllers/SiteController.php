@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\Lesson;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -75,7 +76,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        if (Yii::$app->user->isGuest) {
+            return $this->render('index');
+        }
+
+        return $this->redirect(['lesson/index']);
     }
 
     /**

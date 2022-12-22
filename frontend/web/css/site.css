@@ -101,3 +101,11 @@ a.desc:after {
 {
     text-decoration: none;
 }
+
+.lesson-list tbody tr {
+    cursor: pointer;
+}
+
+.green-tick {
+    width: 15px;
+}

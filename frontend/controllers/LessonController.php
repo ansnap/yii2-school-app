@@ -3,10 +3,29 @@
 namespace frontend\controllers;
 
 use common\models\Lesson;
+use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
 
 class LessonController extends \yii\web\Controller
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     public function actionIndex()
     {
         $lessons = Lesson::find()->all();
